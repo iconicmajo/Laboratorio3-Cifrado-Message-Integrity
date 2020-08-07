@@ -10,11 +10,6 @@ Cifrado de información
 
 """
 
-import hashlib
-import hmac
-import base64
-import binascii
-
 #Ejercicio 2.1
 #Codigo extraido de: https://pycryptodome.readthedocs.io/en/latest/src/hash/hmac.html
 
