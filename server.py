@@ -10,7 +10,7 @@ Cifrado de información
 """
 
 #Ejercicio 2.2
-#Codigo extraido de: https://pycryptodome.readthedocs.io/en/latest/src/hash/hmac.html
+#Codigo extraido de: https://sqreen.github.io/DevelopersSecurityBestPractices/timing-attack/python
 
 import time
 from flask import Flask, request
@@ -29,7 +29,7 @@ app= Flask(__name__)
 key= b'CC3078'
 
 SECRET_TOKEN='ola'
-#Funcion comun donde el atacante si encuentra el token
+#Funcion comun donde el atacante si encuentra el token extraido de: https://sqreen.github.io/DevelopersSecurityBestPractices/timing-attack/python
 def str_equals(first_str, second_str):
     if len(first_str) != len(second_str):
         return False
@@ -40,7 +40,7 @@ def str_equals(first_str, second_str):
         time.sleep(0.01)
     return True
 
-def str_equal2(first_str, second_str):
+def str_equal2(first_str, second_str): #Funcion de defensa con un xor,  extraido de: https://paragonie.com/blog/2015/11/preventing-timing-attacks-on-string-comparison-with-double-hmac-strategy
     if len(first_str) != len(second_str):
         return False
 
@@ -48,17 +48,17 @@ def str_equal2(first_str, second_str):
     for x,y in zip (first_str, second_str):
         x =ord(x)
         y = ord(y)
-        result |= x ^ y
-        time.sleep(0.01)
+        result |= x ^ y #Hacemos el XOR entre ambos str
+        time.sleep(0.01) #Un timing para que todo tome el mismo tiempo
     return result == 0
 
 
-#aqui voy a hacer la seguna defensa
+#Funcion de defensa 2 usando un HMAC, extraido de: https://paragonie.com/blog/2015/11/preventing-timing-attacks-on-string-comparison-with-double-hmac-strategy
 def str_equal3(first_str, second_str):
-    arr = bytes(first_str, 'utf-8')
+    arr = bytes(first_str, 'utf-8') #Se convierten los valores de str a bytes
     arr2 = bytes(second_str, 'utf-8')
-    return(
-    hmac.new( arr, b'Ggg','sha256').hexdigest()
+    return( #Comparacion entre ambos str
+    hmac.new( arr, b'Ggg','sha256').hexdigest() 
     ==
     hmac.new(arr2, b'Ggg','sha256').hexdigest())
 
@@ -80,7 +80,7 @@ def protected():
 
     if not token:
         return 'Missing token',401
-    if str_equal3(token, SECRET_TOKEN):
+    if str_equals(token, SECRET_TOKEN): #Linea para modificar 
         return 'Welcome,password correct'
     else:
         return 'Try better the next one', 403
