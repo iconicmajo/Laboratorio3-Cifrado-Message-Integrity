@@ -13,8 +13,25 @@ Para encriptar un archivo .txt ejecutar  ``` python readtxt.py```
 
 Para desencriptar un archivo .txt ejecutar  ``` python decript.py```
 
+Para parte 2.2 ejecutar ``` python server.py```
+
+### Para ejecutar el Timing Attack:
+En el archivo ``` python server.py``` modificar la linea 83 colocando ``` str_equals```
+Ejecutar el archivo ``` python server.py```
+Ejecutar en otro CMD el archivo  ``` python hack.py```
+
+### Para ejecutar el Timing Attack con Defensa 1 (XOR):
+En el archivo ``` python server.py``` modificar la linea 83 colocando ``` str_equal2```
+Ejecutar el archivo ``` python server.py```
+Ejecutar en otro CMD el archivo  ``` python hack.py```
+
+### Para ejecutar el Timing Attack con Defensa 2 (HMAC):
+En el archivo ``` python server.py``` modificar la linea 83 colocando ``` str_equal3```
+Ejecutar el archivo ``` python server.py```
+Ejecutar en otro CMD el archivo  ``` python hack.py```
+
 ### Demo Parte 2.1
 [Video](https://youtu.be/YdSS5iGNTsA)
 
 ### Demo Parte 2.2
-[Video](https://youtu.be/CgD0-Rxrcn4)
+[Video](https://youtu.be/Jdx2bAPVVG8)
