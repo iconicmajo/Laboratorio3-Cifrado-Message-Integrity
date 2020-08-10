@@ -9,10 +9,6 @@ Instalar la siguiente libreria, para poder utilizar el método de AES
 ### Ejecución
 Para parte 2.1 ejecutar ``` python laboratorio3-1.py```
 
-Para encriptar un archivo .txt ejecutar  ``` python readtxt.py```
-
-Para desencriptar un archivo .txt ejecutar  ``` python decript.py```
-
 Para parte 2.2 ejecutar ``` python server.py```
 
 ### Para ejecutar el Timing Attack:
